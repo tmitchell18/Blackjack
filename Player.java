@@ -126,7 +126,14 @@ public class Player
     {
       //get card
       Card c1 = this.m_aList.remove();
-      totalValue += c1.getValue();
+      if(c1.getValue() == 11 || c1.getValue() == 12 || c1.getValue() == 13)
+      {
+        totalValue += 10;
+      }
+      else
+      {
+        totalValue += c1.getValue();
+      }
       //put card back in deck
       this.collect(c1);
     }

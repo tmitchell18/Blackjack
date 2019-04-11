@@ -64,7 +64,7 @@ public class Game
         Card check = p1.getList().remove();
         if(check.getValue() == 14)
         {
-          System.out.println("Would you like the ace to be worth 1 or 14?");
+          System.out.println("Would you like the ace to be worth 1 or 11?");
           int value = kb.nextInt();
           check.setValue(value);
         }
@@ -75,6 +75,10 @@ public class Game
       int choice = kb.nextInt();
       while(choice == 1)
       {
+        if(p1.sumCards() == 21)
+        {
+          break;
+        }
         p1.hitPlayer(d1);
         //remove most recent card if an ace and change the value
         Card ace = p1.getList().remove(0);
@@ -94,6 +98,7 @@ public class Game
         {
           break;
         }
+        //determine if player has 21 points and should quit
         System.out.println("Would you like to hit(1) or stand(2)?");
         choice = kb.nextInt();
       }
@@ -116,7 +121,7 @@ public class Game
       {
         System.out.println("You win!");
       }
-      //check if player won but doesn't have more than 21 
+      //check if player won but doesn't have more than 21
       else if(p1.sumCards() > comp1.sumCards() && p1.hasLost() == true)
       {
         System.out.println("The computer wins!");
